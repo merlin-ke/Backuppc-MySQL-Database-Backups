@@ -1,0 +1,15 @@
+-->Host system configuration
+#Create user in mysql DB. The user will be used to do actual backup tasks
+GRANT LOCK TABLES,SELECT, SHOW VIEW, RELOAD, REPLICATION CLIENT, EVENT, TRIGGER ON *.* to 'dbbackup'@'localhost' identified by 'strongpassword';
+#Edit the config file to change the user and password. You can either comment the line or edit them to add the new creds.
+vi /etc/default/automysqlbackup
+USERNAME=dbbackup
+PASSWORD=strongpassword
+#Setup Daily Crons
+Setup cron to suit you
+-->BackupPC configuration
+Add the host and add the path to the backups /var/lib/automysqlbackup which is the default 
+
+->Ad Hoc Run
+#To run the backup at any poit, just type
+sudo automysqlbackup 
